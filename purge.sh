@@ -1,16 +1,16 @@
 #!/bin/bash
-
+echo ''
 gameserver=$1
-
+echo ''
 clear
 sudo systemctl stop ${gameserver}
-
+echo ''
 cp /home/steam/${gameserver}/Pavlov/Saved/Config/LinuxServer/Game.ini /home/steam/${gameserver}/Pavlov/Saved/Config/LinuxServer/Game.ini.backup 
-
+echo ''
 echo 'Game.ini backed up to: /home/steam/'${gameserver}'/Pavlov/Saved/Config/LinuxServer/Game.ini.backup'
-
+echo ''
 today=$(date +%m-%d-%y)
-
+echo ''
 echo '
 [/Script/Pavlov.DedicatedServer]
 bEnabled=true
@@ -30,12 +30,12 @@ TimeLimit=60
 #BalanceTableURL="vankruptgames/BalancingTable/main"
 MapRotation=(MapId="sand", GameMode="DM")
 ' > "/home/steam/${gameserver}/Pavlov/Saved/Config/LinuxServer/Game.ini"
-
+echo ''
 sudo systemctl daemon-reload
-
+echo ''
 sudo systemctl start ${gameserver}
+echo ''
 
-clear
 echo '------------------------------'
 echo ''
 echo 'waiting 5 seconds'
